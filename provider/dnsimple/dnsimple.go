@@ -180,6 +180,15 @@ func (p *dnsimpleProvider) Zones(ctx context.Context) (map[string]dnsimple.Zone,
 			break
 		}
 	}
+	// TODO HACK: "ccvdev.eu" is not returned in the zones call, but it is shared with the account, so hardcode it now
+	zones["ccvdev.eu"] = dnsimple.Zone {
+		ID: 0,
+		AccountID: 0,
+		Name: "ccvdev.eu",
+		Reverse: false,
+		CreatedAt: "2021-03-15T14:30:34Z",
+		UpdatedAt: "2021-03-17T12:28:03Z",
+	}
 	return zones, nil
 }
 
